@@ -3,3 +3,4 @@ __pycache__
 .DS_Store
 catalogue/__pycache__
 .idea
+.~lock.diamm_excerpt.csv#
