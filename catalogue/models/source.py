@@ -16,3 +16,8 @@ class Source(models.Model):
     #Relationships
     archive = models.ForeignKey("catalogue.Archive")
     #sources belong to archives
+
+    def __str__(self):
+        return "{0}".format(self.shelfmark)
+        #return self.shelfmark --> returns an object
+        #"{0}".format(self.shelfmark) --> returns string

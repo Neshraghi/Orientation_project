@@ -10,3 +10,6 @@ class Archive(models.Model):
     siglum = models.CharField(max_length=127)
     country = models.CharField(max_length=127)
 
+    def __str__(self):
+        return "{0}".format(self.shelfmark)
+

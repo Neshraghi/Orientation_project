@@ -13,3 +13,6 @@ class Composition(models.Model):
     source = models.ForeignKey("catalogue.Source")
     composer = models.ForeignKey("catalogue.Composer", blank=True, null=True)
     #compositions belong to sources and also belong to a composer
+
+    def __str__(self):
+        return "{0}".format(self.shelfmark)
