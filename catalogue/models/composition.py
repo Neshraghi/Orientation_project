@@ -15,4 +15,4 @@ class Composition(models.Model):
     #compositions belong to sources and also belong to a composer
 
     def __str__(self):
-        return "{0}".format(self.shelfmark)
+        return "{0}".format(self.title)

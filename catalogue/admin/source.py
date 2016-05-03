@@ -3,4 +3,4 @@ from catalogue.models.source import Source
 
 @admin.register(Source)
 class SourceAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name','start_date','end_date','type','surface','comments')
