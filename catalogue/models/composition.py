@@ -8,3 +8,8 @@ class Composition(models.Model):
     #Andrew used this instead of:  name = models.CharField(max_length=255)
     title = models.CharField(max_length=64)
     anonymous = models.BooleanField(default=False)
+
+    #Relationships
+    source = models.ForeignKey("catalogue.Source")
+    composer = models.ForeignKey("catalogue.Composer", blank=True, null=True)
+    #compositions belong to sources and also belong to a composer

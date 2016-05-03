@@ -12,3 +12,7 @@ class Source(models.Model):
     type = models.CharField(max_length=127) #we didn't use source_type because using "source" is kind of redundant
     surface = models.CharField(max_length=127, blank=True, null=True)
     comments = models.TextField(blank=True, null=True)
+
+    #Relationships
+    archive = models.ForeignKey("catalogue.Archive")
+    #sources belong to archives
