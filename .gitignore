@@ -4,3 +4,4 @@ __pycache__
 catalogue/__pycache__
 .idea
 .~lock.diamm_excerpt.csv#
+db.sqlite3

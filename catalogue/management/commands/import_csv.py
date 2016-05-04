@@ -52,6 +52,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print('Deleting sources')
         Source.objects.all().delete()
+        Archive.objects.all().delete()
+        Composer.objects.all().delete()
+        Composition.objects.all().delete()
         with open('diamm_excerpt.csv', 'r') as csvfile:
             contents = csv.DictReader(csvfile)
             for rownum, row in enumerate(contents):
@@ -73,6 +76,6 @@ class Command(BaseCommand):
                     composition.source = source
                     composition.save()
 
-                if composer.name == 'no composer/anon':
+                if row['composer'] == 'no composer/anon':
                     composition.anonymous = True
                     composition.save()
