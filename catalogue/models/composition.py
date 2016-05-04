@@ -10,7 +10,7 @@ class Composition(models.Model):
     anonymous = models.BooleanField(default=False)
 
     #Relationships
-    source = models.ForeignKey("catalogue.Source")
+    source = models.ForeignKey("catalogue.Source", null=True, blank=True)
     composer = models.ForeignKey("catalogue.Composer", blank=True, null=True)
     #compositions belong to sources and also belong to a composer
 

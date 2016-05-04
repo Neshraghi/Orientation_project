@@ -72,3 +72,7 @@ class Command(BaseCommand):
                 if not composition.source:
                     composition.source = source
                     composition.save()
+
+                if composer.name == 'no composer/anon':
+                    composition.anonymous = True
+                    composition.save()
