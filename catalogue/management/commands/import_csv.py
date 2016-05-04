@@ -4,7 +4,7 @@ from catalogue.models.source import Source
 
 
 class Command(BaseCommand):
-    def _get_source(selfself, row):
+    def _get_source(self, row):
         source, created = Source.objects.get_or_create(shelfmark=row['shelfMark'])
         #shelfMark is unique and it is always there, then it is a nice identifier
 
@@ -31,5 +31,6 @@ class Command(BaseCommand):
         Source.objects.all().delete()
         with open('diamm_excerpt.csv', 'r') as csvfile:
             contents = csv.DictReader(csvfile)
-            for row in contents:
+            for rownum, row in enumerate(contents):
+                print("importing row {0}".format(rownum))
                 source = self._get_source(row)
