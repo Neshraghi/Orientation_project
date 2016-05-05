@@ -10,7 +10,7 @@ class ComposerSearchSerializer (serializers.ModelSerializer):
     type = serializers.SerializerMethodField()
     pk = serializers.ReadOnlyField()
 
-    name_s = serializers.ReadOnlyField(composer="name")
+    name_s = serializers.ReadOnlyField(source="name")
 
     def get_type(self, obj):
         return self.Meta.model.__name__.lower()

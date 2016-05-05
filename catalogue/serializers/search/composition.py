@@ -10,8 +10,8 @@ class CompositionSearchSerializer (serializers.ModelSerializer):
     type = serializers.SerializerMethodField()
     pk = serializers.ReadOnlyField()
 
-    title_s = serializers.ReadOnlyField(composition="title")
-    anonymous_b = serializers.ReadOnlyField(composition="anonymous")
+    title_s = serializers.ReadOnlyField(source="title")
+    anonymous_b = serializers.ReadOnlyField(source="anonymous")
 
     def get_type(self, obj):
         return self.Meta.model.__name__.lower()

@@ -10,10 +10,10 @@ class ArchiveSearchSerializer (serializers.ModelSerializer):
     type = serializers.SerializerMethodField()
     pk = serializers.ReadOnlyField()
 
-    name_s = serializers.ReadOnlyField(archive="name")
-    city_s = serializers.ReadOnlyField(archive="city")
-    siglum_s = serializers.ReadOnlyField(archive="siglum")
-    country_s =serializers.ReadOnlyField(archive="country")
+    name_s = serializers.ReadOnlyField(source="name")
+    city_s = serializers.ReadOnlyField(source="city")
+    siglum_s = serializers.ReadOnlyField(source="siglum")
+    country_s =serializers.ReadOnlyField(source="country")
 
     def get_type(self, obj):
         return self.Meta.model.__name__.lower()

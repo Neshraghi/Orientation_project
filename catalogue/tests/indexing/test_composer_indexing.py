@@ -4,9 +4,9 @@ from rest_framework.test import APITestCase
 from model_mommy import mommy
 import pysolr
 
+@override_settings(SOLR={'SERVER': 'http://localhost:8983/solr/test_catalogue'})
 class TestComposerIndexing(APITestCase):
 
-    @override_settings(SOLR={'SERVER': 'http://localhost:8983/solr/test_catalogue'})
     def setUp(self):
         self.server = pysolr.Solr(settings.SOLR['SERVER'])
 
