@@ -38,6 +38,7 @@ class TestArchiveIndexing(APITestCase):
 
         archive.name = "Name1"
         archive.save()
+        q = self.server.search("*:*", fq = fQ) # we were missing this search
         self.assertTrue(q.docs[0]['name_s'] == "Name1")
 
     def tearDown(self):

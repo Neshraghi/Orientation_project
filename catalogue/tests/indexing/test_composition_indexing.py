@@ -38,6 +38,7 @@ class TestCompositionIndexing(APITestCase):
 
         composition.name = "Name1"
         composition.save()
+        q = self.server.search("*:*", fq = fQ) # we were missing this search
         self.assertTrue(q.docs[0]['title_s'] == "Name1") #composition doesn't have a field "name", we used "title" (so title_s)
 
 

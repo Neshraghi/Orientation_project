@@ -34,10 +34,12 @@ class TestSourceIndexing(APITestCase):
         fQ = ["type:source", "pk:{0}".format(source_pk)]
         #server = pysolr.Solr(settings.SOLR['SERVER']) NOT USEFUL, REDUNDANT, WE HAVE ALREADY DONE IT, ADD self IN NEXT LINE
         q = self.server.search("*:*", fq = fQ)
+        #print(q.docs)
         self.assertTrue(q.hits > 0)
 
         source.name = "Name1"
         source.save()
+        q = self.server.search("*:*", fq = fQ) # we were missing this search
         self.assertTrue(q.docs[0]['name_s'] == "Name1")
 
 

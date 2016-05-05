@@ -38,6 +38,7 @@ class TestComposerIndexing(APITestCase):
 
         composer.name = "Name1"
         composer.save()
+        q = self.server.search("*:*", fq = fQ) # we were missing this search
         self.assertTrue(q.docs[0]['name_s'] == "Name1")
 
 
