@@ -32,13 +32,13 @@ class TestCompositionIndexing(APITestCase):
         composition = mommy.make("catalogue.Composition", _fill_optional=['name'])
         composition_pk = composition.pk
         fQ = ["type:composition", "pk:{0}".format(composition_pk)]
-        server = pysolr.Solr(settings.SOLR['SERVER'])
-        q = server.search("*:*", fq = fQ)
+        #server = pysolr.Solr(settings.SOLR['SERVER']) NOT USEFUL, REDUNDANT, WE HAVE ALREADY DONE IT, ADD self IN NEXT LINE
+        q = self.server.search("*:*", fq = fQ)
         self.assertTrue(q.hits > 0)
 
         composition.name = "Name1"
         composition.save()
-        self.assertTrue(q.docs[0]['name_s'] == "Name1")
+        self.assertTrue(q.docs[0]['title_s'] == "Name1") #composition doesn't have a field "name", we used "title" (so title_s)
 
 
     def tearDown(self):

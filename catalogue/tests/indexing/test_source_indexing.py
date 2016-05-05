@@ -32,8 +32,8 @@ class TestSourceIndexing(APITestCase):
         source = mommy.make("catalogue.Source", _fill_optional=['name'])
         source_pk = source.pk
         fQ = ["type:source", "pk:{0}".format(source_pk)]
-        server = pysolr.Solr(settings.SOLR['SERVER'])
-        q = server.search("*:*", fq = fQ)
+        #server = pysolr.Solr(settings.SOLR['SERVER']) NOT USEFUL, REDUNDANT, WE HAVE ALREADY DONE IT, ADD self IN NEXT LINE
+        q = self.server.search("*:*", fq = fQ)
         self.assertTrue(q.hits > 0)
 
         source.name = "Name1"

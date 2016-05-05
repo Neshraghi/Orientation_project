@@ -32,14 +32,13 @@ class TestArchiveIndexing(APITestCase):
         archive = mommy.make("catalogue.Archive", _fill_optional=['name'])
         archive_pk = archive.pk
         fQ = ["type:archive", "pk:{0}".format(archive_pk)]
-        server = pysolr.Solr(settings.SOLR['SERVER'])
-        q = server.search("*:*", fq = fQ)
+        #server = pysolr.Solr(settings.SOLR['SERVER']) NOT USEFUL, REDUNDANT, WE HAVE ALREADY DONE IT, ADD self IN NEXT LINE
+        q = self.server.search("*:*", fq = fQ)
         self.assertTrue(q.hits > 0)
 
         archive.name = "Name1"
         archive.save()
         self.assertTrue(q.docs[0]['name_s'] == "Name1")
-
 
     def tearDown(self):
         pass

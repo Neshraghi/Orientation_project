@@ -32,8 +32,8 @@ class TestComposerIndexing(APITestCase):
         composer = mommy.make("catalogue.Composer", _fill_optional=['name'])
         composer_pk = composer.pk
         fQ = ["type:composer", "pk:{0}".format(composer_pk)]
-        server = pysolr.Solr(settings.SOLR['SERVER'])
-        q = server.search("*:*", fq = fQ)
+        #server = pysolr.Solr(settings.SOLR['SERVER']) NOT USEFUL, REDUNDANT, WE HAVE ALREADY DONE IT, ADD self IN NEXT LINE
+        q = self.server.search("*:*", fq = fQ)
         self.assertTrue(q.hits > 0)
 
         composer.name = "Name1"
